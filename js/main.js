@@ -82,6 +82,8 @@ async function fetchProperties() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
+        console.log(data);
+
     allProperties = data.properties;
     return allProperties;
   } catch (error) {
