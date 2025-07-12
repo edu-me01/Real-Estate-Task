@@ -74,20 +74,24 @@ function getPropertyIcon(type) {
  * @returns {Promise<Array>} Array of properties
  */
 async function fetchProperties() {
-  try {
-    const response = await fetch(
-      "https://edu-me01.github.io/Json-Data/properties.json"
-    );
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+        const response = await fetch('https://edu-me01.github.io/Json-Data/properties.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        // اتأكدي من شكل الداتا في الـ console
+        console.log("✅ Data fetched:", data);
+
+        // لو هو object فيه key اسمه properties
+        const allProperties = data.properties;
+        return allProperties;
+
+    } catch (error) {
+        console.error('❌ Error fetching properties:', error);
+        return [];
     }
-    const data = await response.json();
-    allProperties = data.properties;
-    return allProperties;
-  } catch (error) {
-    console.error("Error fetching properties:", error);
-    return [];
-  }
 }
 
 /**
