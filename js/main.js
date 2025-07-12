@@ -85,7 +85,7 @@ async function fetchProperties() {
         console.log("✅ Data fetched:", data);
 
         // لو هو object فيه key اسمه properties
-        const allProperties = data.properties;
+         allProperties = data.properties;
         return allProperties;
 
     } catch (error) {
@@ -507,6 +507,7 @@ function loadFeaturedProperties() {
   if (!container) return;
 
   container.innerHTML = "";
+console.log(allProperties);
 
   featuredProperties.forEach((property) => {
     const slideHTML = createSwiperSlide(property);
