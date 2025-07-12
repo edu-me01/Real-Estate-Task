@@ -104,7 +104,7 @@ The project uses a modular JavaScript architecture:
 - **`contact.js`**: Contact form handling and validation
 
 ### Data Management
-- **JSON Data Source**: Properties stored in `data/properties.json`
+- **JSON Data Source**: Properties stored in `https://edu-me01.github.io/Real-Estate-Task/data/properties.json`
 - **localStorage**: User preferences, favorites, and form submissions
 - **Fetch API**: Dynamic data loading and management
 
@@ -140,7 +140,7 @@ The website is fully responsive and optimized for:
 ## 🔧 Customization
 
 ### Adding New Properties
-1. Edit `data/properties.json`
+1. Edit `https://edu-me01.github.io/Real-Estate-Task/data/properties.json`
 2. Add new property objects with required fields
 3. Include high-quality images and detailed descriptions
 

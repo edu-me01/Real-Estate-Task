@@ -75,7 +75,7 @@ function getPropertyIcon(type) {
  */
 async function fetchProperties() {
     try {
-        const response = await fetch('data/properties.json');
+        const response = await fetch('https://edu-me01.github.io/Real-Estate-Task/data/properties.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
