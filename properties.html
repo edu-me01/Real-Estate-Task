@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - Luxury Real Estate</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-home text-primary me-2"></i>
+                Luxury Estates
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="properties.html">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html" id="favoritesBtn">
+                            <i class="fas fa-heart text-danger"></i>
+                            <span id="favoritesCount" class="badge bg-danger ms-1">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-primary text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-5 fw-bold mb-3">Our Properties</h1>
+                    <p class="lead">Discover our exclusive collection of premium properties</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <form id="filterForm">
+                                <div class="row g-3">
+                                    <div class="col-md-3">
+                                        <label for="searchInput" class="form-label">Search</label>
+                                        <input type="text" class="form-control" id="searchInput" placeholder="Search properties...">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="propertyType" class="form-label">Property Type</label>
+                                        <select class="form-select" id="propertyType">
+                                            <option value="">All Types</option>
+                                            <option value="apartment">Apartment</option>
+                                            <option value="villa">Villa</option>
+                                            <option value="townhouse">Townhouse</option>
+                                            <option value="penthouse">Penthouse</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="minPrice" class="form-label">Min Price</label>
+                                        <select class="form-select" id="minPrice">
+                                            <option value="">Any</option>
+                                            <option value="100000">$100,000</option>
+                                            <option value="250000">$250,000</option>
+                                            <option value="500000">$500,000</option>
+                                            <option value="1000000">$1,000,000</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="maxPrice" class="form-label">Max Price</label>
+                                        <select class="form-select" id="maxPrice">
+                                            <option value="">Any</option>
+                                            <option value="500000">$500,000</option>
+                                            <option value="1000000">$1,000,000</option>
+                                            <option value="2000000">$2,000,000</option>
+                                            <option value="5000000">$5,000,000</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="sortBy" class="form-label">Sort By</label>
+                                        <select class="form-select" id="sortBy">
+                                            <option value="newest">Newest</option>
+                                            <option value="price-low">Price: Low to High</option>
+                                            <option value="price-high">Price: High to Low</option>
+                                            <option value="name">Name: A to Z</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label class="form-label">&nbsp;</label>
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-filter"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Grid -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Results Info -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">
+                        Showing <span id="resultsCount">0</span> properties
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-outline-primary active" id="gridView">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" id="listView">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Properties Container -->
+            <div class="row" id="propertiesContainer">
+                <!-- Properties will be loaded dynamically -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-5" id="loadMoreContainer" style="display: none;">
+                <button class="btn btn-outline-primary btn-lg" id="loadMoreBtn">
+                    Load More Properties
+                </button>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="text-center py-5" id="noResults" style="display: none;">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h4 class="text-muted">No properties found</h4>
+                <p class="text-muted">Try adjusting your search criteria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed Section -->
+    <section class="py-5 bg-light" id="recentlyViewedSection" style="display: none;">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="section-title">Recently Viewed</h3>
+                </div>
+            </div>
+            <div class="row" id="recentlyViewedContainer">
+                <!-- Recently viewed properties will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Luxury Estates</h5>
+                    <p class="text-muted">Your trusted partner in finding the perfect home. We specialize in luxury properties and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Home</a></li>
+                        <li><a href="properties.html" class="text-muted">Properties</a></li>
+                        <li><a href="favorites.html" class="text-muted">Favorites</a></li>
+                        <li><a href="contact.html" class="text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="mb-3">Property Types</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Apartments</a></li>
+                        <li><a href="#" class="text-muted">Villas</a></li>
+                        <li><a href="#" class="text-muted">Townhouses</a></li>
+                        <li><a href="#" class="text-muted">Penthouses</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6 class="mb-3">Contact Info</h6>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        123 Luxury Street, City, Country
+                    </p>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-phone me-2"></i>
+                        +1 234 567 8900
+                    </p>
+                    <p class="text-muted">
+                        <i class="fas fa-envelope me-2"></i>
+                        info@luxuryestates.com
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 Luxury Estates. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Designed with <i class="fas fa-heart text-danger"></i> for you</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/properties.js"></script>
+</body>
+</html> 

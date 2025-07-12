@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details - Luxury Real Estate</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-home text-primary me-2"></i>
+                Luxury Estates
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="properties.html">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html" id="favoritesBtn">
+                            <i class="fas fa-heart text-danger"></i>
+                            <span id="favoritesCount" class="badge bg-danger ms-1">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Property Details Content -->
+    <div class="mt-5 pt-4">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="properties.html">Properties</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="propertyTitle">Property Details</li>
+                </ol>
+            </nav>
+
+            <!-- Property Header -->
+            <div class="row mb-4">
+                <div class="col-lg-8">
+                    <h1 class="h2 fw-bold" id="propertyName">Loading...</h1>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <span id="propertyLocation">Loading...</span>
+                    </p>
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-primary me-2" id="propertyType">Loading...</span>
+                        <span class="badge bg-success me-2" id="propertyStatus">For Sale</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <h2 class="h3 text-primary fw-bold" id="propertyPrice">Loading...</h2>
+                    <button class="btn btn-outline-primary me-2" id="shareBtn">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <button class="btn btn-outline-danger" id="favoriteBtn">
+                        <i class="far fa-heart"></i> Favorite
+                    </button>
+                </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="swiper property-gallery">
+                        <div class="swiper-wrapper" id="propertyGallery">
+                            <!-- Images will be loaded dynamically -->
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Property Details Grid -->
+            <div class="row">
+                <!-- Main Content -->
+                <div class="col-lg-8">
+                    <!-- Property Description -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title h5 mb-3">Description</h3>
+                            <p id="propertyDescription">Loading...</p>
+                        </div>
+                    </div>
+
+                    <!-- Property Features -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title h5 mb-3">Features & Amenities</h3>
+                            <div class="row" id="propertyFeatures">
+                                <!-- Features will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property Details -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title h5 mb-3">Property Details</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <strong>Bedrooms:</strong> <span id="bedrooms">Loading...</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <strong>Bathrooms:</strong> <span id="bathrooms">Loading...</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <strong>Square Feet:</strong> <span id="squareFeet">Loading...</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <strong>Year Built:</strong> <span id="yearBuilt">Loading...</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <strong>Property Type:</strong> <span id="propertyTypeDetail">Loading...</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <strong>Parking:</strong> <span id="parking">Loading...</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <strong>Furnished:</strong> <span id="furnished">Loading...</span>
+                                        </li>
+                                        <li class="mb-2">
+                                            <strong>Condition:</strong> <span id="condition">Loading...</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title h5 mb-3">Location</h3>
+                            <div class="bg-light p-3 rounded">
+                                <p class="mb-2">
+                                    <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                    <span id="fullAddress">Loading...</span>
+                                </p>
+                                <p class="mb-0">
+                                    <i class="fas fa-info-circle text-primary me-2"></i>
+                                    <span id="locationDescription">Loading...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Contact Agent -->
+                    <div class="card mb-4 sticky-top" style="top: 100px;">
+                        <div class="card-body">
+                            <h4 class="card-title h5 mb-3">Contact Agent</h4>
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" 
+                                     alt="Agent" class="rounded-circle me-3" width="60" height="60">
+                                <div>
+                                    <h6 class="mb-1">John Smith</h6>
+                                    <p class="text-muted mb-0">Senior Real Estate Agent</p>
+                                </div>
+                            </div>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control" placeholder="Your Phone">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </form>
+                            <hr class="my-3">
+                            <div class="text-center">
+                                <p class="mb-2">
+                                    <i class="fas fa-phone text-primary me-2"></i>
+                                    +1 234 567 8900
+                                </p>
+                                <p class="mb-0">
+                                    <i class="fas fa-envelope text-primary me-2"></i>
+                                    john@luxuryestates.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Similar Properties -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title h5 mb-3">Similar Properties</h4>
+                            <div id="similarProperties">
+                                <!-- Similar properties will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Luxury Estates</h5>
+                    <p class="text-muted">Your trusted partner in finding the perfect home. We specialize in luxury properties and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Home</a></li>
+                        <li><a href="properties.html" class="text-muted">Properties</a></li>
+                        <li><a href="favorites.html" class="text-muted">Favorites</a></li>
+                        <li><a href="contact.html" class="text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="mb-3">Property Types</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Apartments</a></li>
+                        <li><a href="#" class="text-muted">Villas</a></li>
+                        <li><a href="#" class="text-muted">Townhouses</a></li>
+                        <li><a href="#" class="text-muted">Penthouses</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6 class="mb-3">Contact Info</h6>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        123 Luxury Street, City, Country
+                    </p>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-phone me-2"></i>
+                        +1 234 567 8900
+                    </p>
+                    <p class="text-muted">
+                        <i class="fas fa-envelope me-2"></i>
+                        info@luxuryestates.com
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 Luxury Estates. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Designed with <i class="fas fa-heart text-danger"></i> for you</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/property-details.js"></script>
+</body>
+</html> 

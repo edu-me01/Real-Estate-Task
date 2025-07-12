@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites - Luxury Real Estate</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-home text-primary me-2"></i>
+                Luxury Estates
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="properties.html">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="favorites.html">Favorites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="favoritesBtn">
+                            <i class="fas fa-heart text-danger"></i>
+                            <span id="favoritesCount" class="badge bg-danger ms-1">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header bg-primary text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-5 fw-bold mb-3">My Favorite Properties</h1>
+                    <p class="lead">Browse the properties you've saved to your favorites list</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Favorites Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Favorites Stats -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card bg-light border-0">
+                        <div class="card-body text-center">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center justify-content-center mb-3">
+                                        <i class="fas fa-heart text-primary fa-2x me-3"></i>
+                                        <div class="text-start">
+                                            <h4 class="mb-0" id="totalFavorites">0</h4>
+                                            <small class="text-muted">Total Favorites</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center justify-content-center mb-3">
+                                        <i class="fas fa-eye text-primary fa-2x me-3"></i>
+                                        <div class="text-start">
+                                            <h4 class="mb-0" id="totalViews">0</h4>
+                                            <small class="text-muted">Properties Viewed</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center justify-content-center mb-3">
+                                        <i class="fas fa-share-alt text-primary fa-2x me-3"></i>
+                                        <div class="text-start">
+                                            <h4 class="mb-0" id="totalShares">0</h4>
+                                            <small class="text-muted">Properties Shared</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0">My Favorite Properties</h5>
+                            <small class="text-muted">View your saved favorite properties</small>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary" id="clearAllBtn">
+                                <i class="fas fa-trash me-2"></i>Clear All
+                            </button>
+                            <button class="btn btn-outline-primary" id="shareFavoritesBtn">
+                                <i class="fas fa-share me-2"></i>Share Favorites
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Favorites Grid -->
+            <div class="row" id="favoritesContainer">
+                <!-- Favorites will be loaded dynamically -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="text-center py-5" id="emptyState" style="display: none;">
+                <i class="fas fa-heart-broken fa-4x text-muted mb-4"></i>
+                <h3 class="text-muted mb-3">No properties in favorites</h3>
+                <p class="text-muted mb-4">Start browsing properties and add them to your favorites</p>
+                <a href="properties.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-search me-2"></i>Browse Properties
+                </a>
+            </div>
+
+            <!-- Recently Viewed Section -->
+            <!-- <div class="row mt-5" id="recentlyViewedSection" style="display: none;">
+                <div class="col-12">
+                    <h3 class="section-title mb-4">Recently Viewed Properties</h3>
+                    <div class="row" id="recentlyViewedContainer">
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">Luxury Estates</h5>
+                    <p class="text-muted">Your trusted partner in finding the perfect home. We specialize in luxury real estate and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Home</a></li>
+                        <li><a href="properties.html" class="text-muted">Properties</a></li>
+                        <li><a href="favorites.html" class="text-muted">Favorites</a></li>
+                        <li><a href="contact.html" class="text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="mb-3">Property Types</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Apartments</a></li>
+                        <li><a href="#" class="text-muted">Villas</a></li>
+                        <li><a href="#" class="text-muted">Duplex</a></li>
+                        <li><a href="#" class="text-muted">Penthouse</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6 class="mb-3">Contact Information</h6>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        123 Luxury Street, City, Country
+                    </p>
+                    <p class="text-muted mb-2">
+                        <i class="fas fa-phone me-2"></i>
+                        +1 234 567 8900
+                    </p>
+                    <p class="text-muted">
+                        <i class="fas fa-envelope me-2"></i>
+                        info@luxuryestates.com
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 Luxury Estates. جميع الحقوق محفوظة.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Designed with <i class="fas fa-heart text-danger"></i> for you</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/favorites.js"></script>
+</body>
+</html> 
